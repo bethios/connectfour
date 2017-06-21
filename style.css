@@ -25,7 +25,6 @@ body{
     background-size: 70vh auto;
     background-repeat: no-repeat;
     font-family: 'Luckiest Guy', cursive;
-
 }
 
 .play{
@@ -34,5 +33,5 @@ body{
     text-align: center;
     color: darkred;
     font-size: 150%;
-    text-space: 125%;
+    line-height: 90%;
 }
