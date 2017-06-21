@@ -23,7 +23,7 @@ function drop(e){
     dropped.style.backgroundColor = currentColor;
     gameBoardColumns[columnNumber][firstEmptyIndex] = currentPlayer;
 
-    tally(columnNumber, firstEmptyIndex);
+    tally(Number(columnNumber), firstEmptyIndex);
     changePlayers();
 }
 
@@ -52,12 +52,14 @@ function tally(columnIndex, spaceIndex){
     var s = 1;
 
     while(columnIndex -s >= 0 || spaceIndex - s >= 0 || columnIndex + s <= 6 || spaceIndex + s <= 5){
-        if(columnIndex + s <= 6 && spaceIndex + s <= 5 ) diagonalDown.push(gameBoardColumns[columnIndex + s][spaceIndex +s]);
+        if(columnIndex + s <= 6 && spaceIndex + s <= 5 ) diagonalDown.push(gameBoardColumns[columnIndex + s][spaceIndex + s]);
         if(columnIndex - s >= 0 && spaceIndex - s >= 0 ) diagonalDown.unshift(gameBoardColumns[columnIndex - s ][spaceIndex - s]);
         if(columnIndex + s <= 6 && spaceIndex - s >= 0 ) diagonalUp.push(gameBoardColumns[columnIndex + s ][spaceIndex - s]);
         if(columnIndex - s >= 0 && spaceIndex + s <= 5 ) diagonalUp.unshift(gameBoardColumns[columnIndex - s ][spaceIndex + s]);
         s++;
     }
+
+    console.log(diagonalDown)
     isAWinner([row, column, diagonalDown, diagonalUp])
 }
 
