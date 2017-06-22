@@ -14,17 +14,33 @@ const gameBoardColumns = [
 
 function drop(e){
     var target = document.getElementsByClassName(e.srcElement.parentNode.classList);
-    var columnNumber = e.srcElement.parentNode.classList.value.slice(-1);
+    var columnNumber = Number(e.srcElement.parentNode.classList.value.slice(-1));
+    var tink = document.getElementById("tink");
+    tink.play();
 
     var firstEmptyIndex = gameBoardColumns[columnNumber].lastIndexOf(0);
-
     var dropped = target[0].children[firstEmptyIndex];
+    for(var i = 0; i < firstEmptyIndex; i++){
+        let hole = target[0].children[i];
+        hole.style.backgroundColor = currentColor;
+        setTimeout(function() {
+            hole.style.backgroundColor = "white";
+        }, 50);
+    }
 
     dropped.style.backgroundColor = currentColor;
     gameBoardColumns[columnNumber][firstEmptyIndex] = currentPlayer;
 
-    tally(Number(columnNumber), firstEmptyIndex);
+    tally(columnNumber, firstEmptyIndex);
     changePlayers();
+}
+
+function pauseBrowser(millis) {
+    var date = Date.now();
+    var curDate = null;
+    do {
+        curDate = Date.now();
+    } while (curDate-date < millis);
 }
 
 columns.forEach(column => column.addEventListener('click', drop))
@@ -59,7 +75,6 @@ function tally(columnIndex, spaceIndex){
         s++;
     }
 
-    console.log(diagonalDown)
     isAWinner([row, column, diagonalDown, diagonalUp])
 }
 
