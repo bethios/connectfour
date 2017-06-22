@@ -1,6 +1,9 @@
 var currentPlayer = 1;
 var currentColor = 'yellow';
 var playerDisplay = document.querySelector('.playerUp');
+var tink = document.getElementById("tink");
+var win = document.getElementById('win');
+
 
 const columns = document.querySelectorAll('.column');
 const gameBoardColumns = [
@@ -15,8 +18,6 @@ const gameBoardColumns = [
 function drop(e){
     var target = document.getElementsByClassName(e.srcElement.parentNode.classList);
     var columnNumber = Number(e.srcElement.parentNode.classList.value.slice(-1));
-    var tink = document.getElementById("tink");
-    tink.play();
 
     var firstEmptyIndex = gameBoardColumns[columnNumber].lastIndexOf(0);
     var dropped = target[0].children[firstEmptyIndex];
@@ -83,7 +84,10 @@ function isAWinner(sequences){
         var test = sequences[i].join("");
         if(test.indexOf("1111") !== -1 || test.indexOf("2222") !== -1){
             var announce = document.querySelector('.announcement');
-            announce.textContent = "YOU'VE WON!"
+            announce.textContent = "YOU'VE WON!";
+            win.play()
+        }else{
+            tink.play();
         }
     }
 }
