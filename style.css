@@ -1,8 +1,8 @@
 .board{
     background-color: navy;
-    padding: 20px;
+    padding: 1em;
     white-space: nowrap;
-    width: 690px;
+    width: 28em;
 }
 
 .column{
@@ -12,8 +12,8 @@
 .space{
     border-radius: 50%;
     background-color: white;
-    width: 75px;
-    height: 75px;
+    width: 3em;
+    height: 3em;
     display: block;
     margin: 10px;
     box-shadow: 0 5px 5px gray
@@ -22,17 +22,17 @@
 body{
     background-image: url('character.jpg');
     background-position: left top;
-    background-size: 70vh auto;
+    background-size: 32em auto;
     background-repeat: no-repeat;
     font-family: 'Luckiest Guy', cursive;
-
 }
 
 .play{
-    margin-top: 50px;
-    margin-left: 400px;
+    margin-top: 2em;
+    margin-left: 17em;
     text-align: center;
     color: darkred;
     font-size: 150%;
-    text-space: 125%;
+    line-height: 90%;
+    width: 28em;
 }
